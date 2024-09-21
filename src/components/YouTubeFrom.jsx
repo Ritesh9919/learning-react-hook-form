@@ -10,6 +10,10 @@ function YouTubeFrom() {
       username: "riteshm",
       email: "",
       channel: "",
+      social: {
+        twitter: "twitter.com",
+        facebook: "facebook.com",
+      },
     },
   });
   const { register, control, handleSubmit, formState } = form;
@@ -101,6 +105,30 @@ function YouTubeFrom() {
             className="shadow-md p-2 rounded-md outline-none"
           />
           <p className="text-red-600">{errors.channel?.message}</p>
+        </div>
+        <div className="flex flex-col gap-3 justify-center items-center">
+          <label className="text-sm" htmlFor="twitter">
+            Twitter
+          </label>
+          <input
+            type="text"
+            id="twitter"
+            name="twitter"
+            {...register("social.twitter")}
+            className="shadow-md p-2 rounded-md outline-none"
+          />
+        </div>
+        <div className="flex flex-col gap-3 justify-center items-center">
+          <label className="text-sm" htmlFor="facebook">
+            Facebook
+          </label>
+          <input
+            type="text"
+            id="facebook"
+            name="facebook"
+            {...register("social.facebook")}
+            className="shadow-md p-2 rounded-md outline-none"
+          />
         </div>
 
         <button className="w-full bg-gray-500 p-2 text-white font-semibold rounded-md">
