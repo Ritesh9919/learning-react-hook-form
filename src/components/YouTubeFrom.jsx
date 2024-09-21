@@ -2,11 +2,17 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 
+let renderCount = 0;
+
 function YouTubeFrom() {
   const form = useForm();
   const { register, control } = form;
+  renderCount++;
   return (
-    <>
+    <div>
+      <h1 className="text-center mt-10 text-lg font-bold text-gray-600">
+        YouTube Form {renderCount / 2}
+      </h1>
       <form className="p-5 shadow-lg w-[300px] h-[350px] mx-auto mt-10 flex flex-col gap-7 items-center justify-center rounded-md">
         <div className="flex gap-3 justify-center items-center">
           <label className="text-sm" htmlFor="username">
@@ -52,7 +58,7 @@ function YouTubeFrom() {
         </button>
       </form>
       <DevTool control={control} />
-    </>
+    </div>
   );
 }
 
