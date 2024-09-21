@@ -16,6 +16,8 @@ function YouTubeFrom() {
       },
       phoneNumbers: ["", ""],
       phNumbers: [{ number: "" }],
+      age: 0,
+      dob: new Date(),
     },
   });
   const { register, control, handleSubmit, formState } = form;
@@ -36,7 +38,7 @@ function YouTubeFrom() {
         YouTube Form {renderCount / 2}
       </h1>
       <form
-        className="p-5 shadow-lg w-[300px] h-[350px] mx-auto mt-10 flex flex-col gap-7 items-center justify-center rounded-md"
+        className="p-5 shadow-lg w-[300px]  mx-auto mt-10 flex flex-col gap-7 items-center justify-center rounded-md"
         onSubmit={handleSubmit(onSubmit)}
         noValidate
       >
@@ -112,6 +114,42 @@ function YouTubeFrom() {
             className="shadow-md p-2 rounded-md outline-none"
           />
           <p className="text-red-600">{errors.channel?.message}</p>
+        </div>
+        <div className="flex flex-col gap-3 justify-center items-center">
+          <label className="text-sm" htmlFor="age">
+            Age
+          </label>
+          <input
+            type="number"
+            id="age"
+            {...register("age", {
+              valueAsNumber: true,
+              required: {
+                value: true,
+                message: "age name is required",
+              },
+            })}
+            className="shadow-md p-2 rounded-md outline-none"
+          />
+          <p className="text-red-600">{errors.age?.message}</p>
+        </div>
+        <div className="flex flex-col gap-3 justify-center items-center">
+          <label className="text-sm" htmlFor="dob">
+            DOB
+          </label>
+          <input
+            type="date"
+            id="date"
+            {...register("dob", {
+              valueAsDate: true,
+              required: {
+                value: true,
+                message: "dob name is required",
+              },
+            })}
+            className="shadow-md p-2 rounded-md outline-none"
+          />
+          <p className="text-red-600">{errors.dob?.message}</p>
         </div>
         <div className="flex flex-col gap-3 justify-center items-center">
           <label className="text-sm" htmlFor="twitter">
