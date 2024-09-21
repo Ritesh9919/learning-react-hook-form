@@ -5,7 +5,13 @@ import { DevTool } from "@hookform/devtools";
 let renderCount = 0;
 
 function YouTubeFrom() {
-  const form = useForm();
+  const form = useForm({
+    defaultValues: {
+      username: "riteshm",
+      email: "",
+      channel: "",
+    },
+  });
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
 
