@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 
 let renderCount = 0;
@@ -15,10 +15,16 @@ function YouTubeFrom() {
         facebook: "facebook.com",
       },
       phoneNumbers: ["", ""],
+      phNumbers: [{ number: "" }],
     },
   });
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
+
+  const { fields, append, remove } = useFieldArray({
+    name: "phNumbers",
+    control,
+  });
 
   const onSubmit = (data) => {
     console.log(data);
@@ -152,6 +158,25 @@ function YouTubeFrom() {
             {...register("phoneNumbers.1")}
             className="shadow-md p-2 rounded-md outline-none"
           />
+        </div>
+
+        <div>
+          <label>Lists of phone numbers</label>
+          <div>
+            {fields.map((field, index) => (
+              <div key={field.id}>
+                <input type="text" {...register(`phNumbers.${index}.number`)} />
+                {index > 0 && (
+                  <button type="button" onClick={() => remove(index)}>
+                    Remove
+                  </button>
+                )}
+              </div>
+            ))}
+            <button type="button" onClick={() => append({ number: "" })}>
+              Add PhoneNumber
+            </button>
+          </div>
         </div>
 
         <button className="w-full bg-gray-500 p-2 text-white font-semibold rounded-md">
