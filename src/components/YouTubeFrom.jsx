@@ -14,6 +14,7 @@ function YouTubeFrom() {
         twitter: "twitter.com",
         facebook: "facebook.com",
       },
+      phoneNumbers: ["", ""],
     },
   });
   const { register, control, handleSubmit, formState } = form;
@@ -127,6 +128,28 @@ function YouTubeFrom() {
             id="facebook"
             name="facebook"
             {...register("social.facebook")}
+            className="shadow-md p-2 rounded-md outline-none"
+          />
+        </div>
+        <div className="flex flex-col gap-3 justify-center items-center">
+          <label className="text-sm" htmlFor="primary-phone">
+            Primary PhoneNumber
+          </label>
+          <input
+            type="text"
+            id="primary-phone"
+            {...register("phoneNumbers.0")}
+            className="shadow-md p-2 rounded-md outline-none"
+          />
+        </div>
+        <div className="flex flex-col gap-3 justify-center items-center">
+          <label className="text-sm" htmlFor="secondary-phone">
+            Secondary PhoneNumber
+          </label>
+          <input
+            type="text"
+            id="secondary-phone"
+            {...register("phoneNumbers.1")}
             className="shadow-md p-2 rounded-md outline-none"
           />
         </div>
