@@ -6,7 +6,8 @@ let renderCount = 0;
 
 function YouTubeFrom() {
   const form = useForm();
-  const { register, control, handleSubmit } = form;
+  const { register, control, handleSubmit, formState } = form;
+  const { errors } = formState;
 
   const onSubmit = (data) => {
     console.log(data);
@@ -22,7 +23,7 @@ function YouTubeFrom() {
         onSubmit={handleSubmit(onSubmit)}
         noValidate
       >
-        <div className="flex gap-3 justify-center items-center">
+        <div className="flex flex-col gap-3 justify-center items-center">
           <label className="text-sm" htmlFor="username">
             Username
           </label>
@@ -39,8 +40,10 @@ function YouTubeFrom() {
             placeholder="Username"
             className="shadow-md p-2 rounded-md outline-none"
           />
+          <p className="text-red-600">{errors.username?.message}</p>
         </div>
-        <div className="flex gap-3 justify-center items-center">
+
+        <div className="flex flex-col gap-3 justify-center items-center">
           <label className="text-sm" htmlFor="email">
             Email
           </label>
@@ -57,8 +60,10 @@ function YouTubeFrom() {
             placeholder="Email"
             className="shadow-md p-2 rounded-md outline-none"
           />
+          <p className="text-red-600">{errors.email?.message}</p>
         </div>
-        <div className="flex gap-3 justify-center items-center">
+
+        <div className="flex flex-col gap-3 justify-center items-center">
           <label className="text-sm" htmlFor="channel">
             Channel
           </label>
@@ -75,7 +80,9 @@ function YouTubeFrom() {
             placeholder="Channel"
             className="shadow-md p-2 rounded-md outline-none"
           />
+          <p className="text-red-600">{errors.channel?.message}</p>
         </div>
+
         <button className="w-full bg-gray-500 p-2 text-white font-semibold rounded-md">
           Submit
         </button>
